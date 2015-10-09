@@ -1,0 +1,28 @@
+# {{ ansible_managed }}
+
+{% for vhost in apache_vhosts %}
+<VirtualHost *:{{ apache_listen_port }}>
+  ServerName {{ vhost.servername }}
+  DocumentRoot {{ vhost.documentroot }}
+
+  <Directory {{ vhost.documentroot }}>
+    AllowOverride None
+    Options None
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+{% if vhost.directoryindex is defined %}
+  DirectoryIndex {{ vhost.directoryindex }}
+{% endif %}
+
+{% if vhost.serveradmin is defined %}
+  ServerAdmin {{ vhost.serveradmin }}
+{% endif %}
+
+{% if vhost.extra_parameters is defined %}
+  {{ vhost.extra_parameters }}
+{% endif %}
+</VirtualHost>
+
+{% endfor %}

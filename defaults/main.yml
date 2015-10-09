@@ -1,0 +1,33 @@
+---
+apache_User: apache
+apache_Group: apache
+
+apache_ServerAdmin: 'root@localhost'
+apache_ServerTokens: Prod
+
+apache_Timeout: 60
+
+apache_KeepAlive: 'Off'
+apache_MaxKeepAliveRequests: 100
+apache_KeepAliveTimeout: 1
+
+apache_prefork_StartServers: 8
+apache_prefork_MinSpareServers: 5
+apache_prefork_MaxSpareServers: 20
+apache_prefork_ServerLimit: 256
+apache_prefork_MaxClients: 256
+apache_prefork_MaxRequestsPerChild: 4000
+
+apache_use_default_logging: yes
+
+apache_sysconfig: []
+
+apache_listen_port: 80
+apache_listen_port_ssl: 443
+
+apache_create_vhosts: false
+apache_vhosts: []
+apache_vhosts_ssl: []
+
+apache_conf_template_root: '.'
+apache_conf_templates: []

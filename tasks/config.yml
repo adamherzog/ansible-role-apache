@@ -1,0 +1,67 @@
+---
+- name: config | setup primary apache configuration
+  template:
+    dest: /etc/httpd/conf/httpd.conf
+    src: httpd.conf.j2
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  notify:
+    - restart apache
+
+- name: config | setup apache ssl configuration
+  template:
+    dest: /etc/httpd/conf.d/ssl.conf
+    src: ssl.conf.j2
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  notify:
+    - restart apache
+
+- name: config | add apache vhost configuration
+  template:
+    dest: /etc/httpd/conf.d/vhosts.conf
+    src: vhosts.conf.j2
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  when: apache_create_vhosts
+  notify:
+    - reload apache
+
+- name: config | add apache configuration templates
+  template:
+    dest: /etc/httpd/conf.d/{{ item }}
+    src: "{{ apache_conf_template_root }}/{{ item }}.j2"
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  with_items: apache_conf_templates
+  notify:
+    - reload apache
+
+- name: config | remove unwanted apache config files
+  file:
+    name: /etc/httpd/conf.d/{{ item }}
+    state: absent
+    backup: yes
+  with_items:
+    - README
+    - welcome.conf
+  notify:
+    - reload apache
+
+- name: config | set sysconfig entries
+  lineinfile:
+    dest: /etc/sysconfig/httpd
+    line: "{{ item }}"
+    state: present
+    backup: yes
+  with_items: apache_sysconfig
+  notify:
+    - restart apache

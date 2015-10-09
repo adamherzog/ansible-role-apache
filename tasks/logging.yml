@@ -1,0 +1,7 @@
+---
+- name: logging | remove apache logrotate config
+  file:
+    name: /etc/logrotate.d/httpd
+    state: absent
+    backup: yes
+  when: not apache_use_default_logging
