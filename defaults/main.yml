@@ -18,6 +18,10 @@ apache_prefork_ServerLimit: 256
 apache_prefork_MaxClients: 256
 apache_prefork_MaxRequestsPerChild: 4000
 
+apache_use_namevirtualhost: yes
+apache_use_listen: yes
+apache_use_listen_ssl: yes
+
 apache_use_default_logging: yes
 
 apache_sysconfig: []

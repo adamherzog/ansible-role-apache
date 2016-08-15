@@ -16,7 +16,9 @@ LoadModule ssl_module modules/mod_ssl.so
 # When we also provide SSL we have to listen to the 
 # the HTTPS port in addition.
 #
+{% if apache_use_listen_ssl %}
 Listen {{ apache_listen_port_ssl }}
+{% endif %}
 
 ##
 ##  SSL Global Context
