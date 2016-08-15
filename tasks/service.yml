@@ -2,5 +2,5 @@
 - name: service | ensure apache is running and enabled
   service:
     name: httpd
-    state: started
+    state: "{{ apache_service_state|default('started') }}"
     enabled: yes
