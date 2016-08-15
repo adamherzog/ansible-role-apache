@@ -31,7 +31,7 @@
     backup: yes
   when: apache_create_vhosts
   notify:
-    - reload apache
+    - restart apache
 
 - name: config | add apache configuration templates
   template:
@@ -43,7 +43,7 @@
     backup: yes
   with_items: apache_conf_templates
   notify:
-    - reload apache
+    - restart apache
 
 - name: config | remove unwanted apache config files
   file:
@@ -54,7 +54,7 @@
     - README
     - welcome.conf
   notify:
-    - reload apache
+    - restart apache
 
 - name: config | set sysconfig entries
   lineinfile:
