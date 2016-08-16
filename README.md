@@ -70,6 +70,17 @@ install a set of defined templates.
     should be named as you'd like it installed. The template files themselves
     should be named with a '.j2' suffix.
 
+This role can also manage htpasswd entries:
+
+ * apache_use_htpasswd: false
+    Determines whether to manage htpasswd file(s) or not.
+ * apache_htpasswd_entries: []
+    Specify the htpasswd entries; each item may have the following keys:
+        * destfile              Required
+        * username              Required
+        * password              Required if state is 'present'
+        * state                 Optional; defaults to 'present'.
+
 Example Playbook
 ----------------
 

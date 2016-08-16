@@ -35,3 +35,9 @@ apache_vhosts_ssl: []
 
 apache_conf_template_root: '.'
 apache_conf_templates: []
+
+apache_use_htpasswd: false
+apache_htpasswd_entries: []
+#  - destfile: /path/to/htpasswd/file
+#    username: user1
+#    password: userPass1!

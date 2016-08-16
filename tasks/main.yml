@@ -1,5 +1,6 @@
 ---
 - include: install.yml
+- include: htpasswd.yml
 - include: config.yml
 - include: logging.yml
 - include: service.yml
