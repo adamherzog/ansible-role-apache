@@ -41,7 +41,7 @@
     group: root
     mode: 0644
     backup: yes
-  with_items: apache_conf_templates
+  with_items: '{{ apache_conf_templates }}'
   notify:
     - restart apache
 
@@ -62,6 +62,6 @@
     line: "{{ item }}"
     state: present
     backup: yes
-  with_items: apache_sysconfig
+  with_items: '{{ apache_sysconfig }}'
   notify:
     - restart apache
