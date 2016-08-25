@@ -23,6 +23,8 @@ apache_use_listen: yes
 apache_use_listen_ssl: yes
 
 apache_use_default_logging: yes
+apache_use_default_logrotate: yes
+
 
 apache_sysconfig: []
 

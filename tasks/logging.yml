@@ -4,4 +4,4 @@
     name: /etc/logrotate.d/httpd
     state: absent
     backup: yes
-  when: not apache_use_default_logging
+  when: not apache_use_default_logrotate

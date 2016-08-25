@@ -34,6 +34,10 @@ Role Variables
     alone. Otherwise, the global logging configuration will be disabled. In
     that case, logging will have to be configured through other means,
     probably via an apache_conf_templates file.
+ * apache_use_default_logrotate: yes
+    When set to 'yes', the default logrotate configuration for Apache will be
+    left alone. Otherwise, it will be removed, and log rotation will have to
+    be handled by other means.
 
  * apache_sysconfig: []
     Specifies a list of lines to add to the httpd sysconfig file. This is
