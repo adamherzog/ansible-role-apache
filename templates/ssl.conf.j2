@@ -20,6 +20,10 @@ LoadModule ssl_module modules/mod_ssl.so
 Listen {{ apache_listen_port_ssl }}
 {% endif %}
 
+{% if apache_use_namevirtualhost_ssl %}
+NameVirtualHost *:{{ apache_listen_port_ssl }}
+{% endif %}
+
 ##
 ##  SSL Global Context
 ##
