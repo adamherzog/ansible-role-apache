@@ -29,7 +29,7 @@
     group: root
     mode: 0644
     backup: yes
-  when: apache_create_vhosts
+  when: apache_create_vhosts|bool
   notify:
     - restart apache
 
