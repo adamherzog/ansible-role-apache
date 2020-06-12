@@ -33,9 +33,17 @@
   notify:
     - restart apache
 
+- name: config | create directory for separate apache vhost config files
+  file:
+    name: /etc/httpd/vhosts
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
 - name: config | add apache configuration templates
   template:
-    dest: /etc/httpd/conf.d/{{ item }}
+    dest: /etc/httpd/{{ item }}
     src: "{{ apache_conf_template_root }}/{{ item }}.j2"
     owner: root
     group: root
@@ -47,11 +55,11 @@
 
 - name: config | remove unwanted apache config files
   file:
-    name: /etc/httpd/conf.d/{{ item }}
+    name: /etc/httpd/{{ item }}
     state: absent
   with_items:
-    - README
-    - welcome.conf
+    - conf.d/README
+    - conf.d/welcome.conf
   notify:
     - restart apache
 
