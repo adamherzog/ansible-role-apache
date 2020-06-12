@@ -49,7 +49,6 @@
   file:
     name: /etc/httpd/conf.d/{{ item }}
     state: absent
-    backup: yes
   with_items:
     - README
     - welcome.conf
