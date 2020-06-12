@@ -1,8 +1,7 @@
 ---
 - name: install | install apache packages
   yum:
-    name: "{{ item }}"
+    name:
+      - httpd
+      - mod_ssl
     state: present
-  with_items:
-    - httpd
-    - mod_ssl
